@@ -1,65 +1,113 @@
-# 🚀 Offline AI Assistant (Java + Ollama)
+# Offline AI Assistant (Java + Ollama)
 
-An **offline AI assistant** built using **Java (Spring Boot)** and **Ollama**, capable of answering questions using **local language models** and **PDF documents (RAG)** — without any cloud APIs.
+An offline AI assistant built using Java (Spring Boot) and Ollama, capable of answering questions using local Large Language Models (LLMs) 
+and document-based Retrieval-Augmented Generation (RAG) — without any cloud dependency.
+
+
+##  Project Overview
+
+This project demonstrates how to build a fully local AI system  that:
+- Runs  without internet 
+- Uses  small language models (SLMs)  locally
+- Supports  document-based question answering 
+- Mimics core functionality of ChatGPT using  Java backend 
 
 ---
 
-## Features
+## Key Features
 
-- ✅ Fully offline AI (no internet required)
-- ✅ Local LLM integration using Ollama
-- ✅ REST API-based chat system
-- ✅ PDF upload and processing
-- ✅ Document-based Q&A (RAG)
-- ✅ Beginner-friendly architecture
+- ✅ Offline AI assistant (no external APIs)
+- ✅ Integration with  Ollama (local LLM runtime)
+- ✅ REST API for chat interaction
+- ✅ PDF/document upload support
+- ✅ RAG (Retrieval-Augmented Generation)
+- ✅ Keyword-based context retrieval
+- ✅ Lightweight and extensible architecture
 
 ---
 
 ## Architecture
+User Request
+↓
+Spring Boot API (ChatController)
+↓
+RAG Layer (Document Retrieval)
+↓
+Ollama API (Local LLM)
+↓
+Response Generated
 
-User → Spring Boot API → Ollama → Local LLM  
-↓  
-PDF (RAG Context)
 
----
 
 ## Tech Stack
 
-| Layer        | Technology              |
-|-------------|------------------------|
-| Backend      | Java, Spring Boot      |
-| AI Model     | Ollama (Mistral)       |
-| PDF Parsing  | Apache PDFBox          |
-| Build Tool   | Maven                  |
-| IDE          | IntelliJ IDEA (Free)   |
+| Category        | Technology                     |
+|----------------|-------------------------------|
+| Backend        | Java, Spring Boot             |
+| AI Runtime     | Ollama                        |
+| Model Used     | Mistral (7B)                  |
+| Document Parsing | Apache PDFBox               |
+| Build Tool     | Maven                         |
+| IDE            | IntelliJ IDEA (Community)     |
 
----
 
 ## Project Structure
 
-offline-ai-assistant-java/
-│
-├── src/main/java/com/example/demo
-│ ├── controller/
-│ │ ├── ChatController.java
-│ │ └── UploadController.java
-│ │
-│ ├── service/
-│ │ ├── OllamaService.java
-│ │ ├── PdfService.java
-│ │ └── RAGService.java
-│ │
-│ └── DemoApplication.java
-│
-├── src/main/resources/
-│ ├── data/ # PDFs stored here
-│ ├── static
-│ └── application.properties
-│
-├── pom.xml
-└── README.md
 
-## Upload PDF
+src/main/java/com/example/demo
+│
+├── controller/
+│ ├── ChatController.java
+│ └── UploadController.java
+│
+├── service/
+│ ├── OllamaService.java
+│ ├── PdfService.java
+│ └── RAGService.java
+│
+└── DemoApplication.java
+
+src/main/resources/
+├── data/ 
+├── static/ 
+└── application.properties
+
+
+
+## Setup Instructions
+
+### 1. Install Ollama
+```bash
+brew install ollama
+2. Run Local Model
+ollama run mistral
+3. Start Ollama Server
+ollama serve
+4. Run Spring Boot Application
+mvn spring-boot:run
+🧪 API Endpoints
+🔹 Chat Endpoint
+GET /chat?prompt=Your question
+Example:
 http://localhost:8080/chat?prompt=What is API testing?
+🔹 Upload Document
+POST /upload
+Example:
+curl -F "file=@/path/to/file.pdf" http://localhost:8080/upload
 
-Attached screenshot of testing
+Key Learnings
+-Integration of LLMs in Java applications
+-Building offline AI systems
+-Implementing RAG architecture
+-Prompt engineering fundamentals
+-Backend design for AI-driven systems
+
+Portfolio Highlight
+Built a fully offline AI assistant using Java and Ollama, integrating Retrieval-Augmented Generation (RAG) 
+for document-based question answering without relying on external APIs or cloud services.
+
+Author
+Nikita Gandhi
+
+Support
+If you found this project useful, consider giving it a ⭐ on GitHub!
