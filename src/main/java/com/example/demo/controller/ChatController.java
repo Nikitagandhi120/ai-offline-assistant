@@ -22,6 +22,21 @@ public class ChatController {
 
         String context = rag.getContext(prompt);
 
-        return ollama.ask(context, prompt);
+        System.out.println("RAG CONTEXT: " + context);
+
+        String finalPrompt = """
+    You are an AI assistant.
+
+    Use ONLY the context below to answer.
+    If answer is not found, say "Not found in document".
+
+    Context:
+    %s
+
+    Question:
+    %s
+    """.formatted(context, prompt);
+
+        return ollama.askModel("mistral", finalPrompt);
     }
 }
